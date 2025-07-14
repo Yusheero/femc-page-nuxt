@@ -17,10 +17,12 @@ const toRouterPath = () => {
   <div class="info">
     <div class="info__container">
       <div class="info__header">
-        <button class="info__button" @click="toRouterPath"><ArrowLeft :size="24" color="#CCCCCC" /></button>
-        <div :class="['info__logo ' + props?.data?.logoClass]"></div>
+        <button class="info__button" @click="toRouterPath"><ArrowLeft :size="18" color="#CCCCCC" /></button>
       </div>
-      <p class="info__description" v-for="item in props.data?.description">{{ item }}</p>
+      <div class="info__inner">
+        <div :class="['info__logo ' + props?.data?.logoClass]"></div>
+        <p class="info__description" v-for="item in props.data?.description">{{ item }}</p>
+      </div>
     </div>  
   </div>
 </template>
@@ -31,12 +33,12 @@ const toRouterPath = () => {
   background: var(--color-black-light);
   border: 2px solid var(--color-grey);
   border-radius: 1rem;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
   gap: 1rem;
-  padding: 2rem;
   width: 100%;
 
   &__container {
@@ -44,7 +46,6 @@ const toRouterPath = () => {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    gap: 1.5rem;
     align-items: center;
     width: 100%;
   }
@@ -55,12 +56,25 @@ const toRouterPath = () => {
     justify-content: flex-start;
     align-items: center;
     gap: 1.5rem;
+    border-bottom: 2px solid var(--color-grey);
+  }
+
+  &__inner {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 2rem;
   }
 
   &__logo {
-    width: 210px;
-    height: 46px;
+    width: 230px;
+    height: 60px;
     background-repeat: no-repeat;
+    margin-bottom: 0.5rem;
   }
 
   &__description {
@@ -75,11 +89,11 @@ const toRouterPath = () => {
     justify-content: center;
     align-items: center;
     border: none;
-    border-radius: 50%;
-    background: var(--color-grey-dark);
+    border-right: 2px solid var(--color-grey);
+    background: unset;
     opacity: 0.8;
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 3rem;
+    height: 3rem;
 
     &:hover {
       background: var(--color-grey-light);

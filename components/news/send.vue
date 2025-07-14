@@ -12,8 +12,7 @@ const toRouterPath = () => {
 <template>
   <div class="send-news">
     <div class="send-news__header">
-      <button class="send-news__button" @click="toRouterPath"><ArrowLeft :size="24" color="#CCCCCC" /></button>
-      <p class="send-news__title">Вы можете отправить новость через наш Discord канал, в новостной форум или через сообщения в группе VK</p> 
+      <button class="send-news__button" @click="toRouterPath"><ArrowLeft :size="18" color="#CCCCCC" /></button>
     </div>    
     <div class="send-news__content">
       <a class="item" href="https://discord.gg/BMA2mmaw">
@@ -32,15 +31,15 @@ const toRouterPath = () => {
 <style scoped lang="scss">
 .send-news {
   position: relative;
-  padding: 1.5rem;
   background: var(--color-black-light);
   border: 2px solid var(--color-grey);
   border-radius: 1rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   gap: 1rem;
+  overflow: hidden;
 
   &__title {
     text-align: center;
@@ -51,10 +50,11 @@ const toRouterPath = () => {
   &__header {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     gap: 1rem;
-    height: 40%;
+    width: 100%;
+    border-bottom: 2px solid var(--color-grey);
   }
 
   &__content {
@@ -64,6 +64,7 @@ const toRouterPath = () => {
     justify-content: center;
     align-items: center;
     gap: 0.5rem;
+    padding: 1.5rem;
   }
 
   &__attention {
@@ -78,11 +79,11 @@ const toRouterPath = () => {
     justify-content: center;
     align-items: center;
     border: none;
-    border-radius: 50%;
-    background: var(--color-grey-dark);
+    border-right: 2px solid var(--color-grey);
+    background: unset;
     opacity: 0.8;
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 3rem;
+    height: 3rem;
 
     &:hover {
       background: var(--color-grey-light);

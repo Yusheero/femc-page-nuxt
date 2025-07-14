@@ -19,11 +19,10 @@ const toRouterPath = (id: any) => {
 </script>
 
 <template>
-  <div class="news-item" :style="{ backgroundImage: `linear-gradient(180deg, rgba(5, 5, 5, 0) 50%, rgba(5, 5, 5, 0.75) 80.5%, #050505 100%), url(${data?.homePreviewImage})` }">
+  <button @click="toRouterPath(data?.id)" class="news-item" :style="{ backgroundImage: `linear-gradient(180deg, rgba(5, 5, 5, 0) 50%, rgba(5, 5, 5, 0.75) 80.5%, #050505 100%), url(${data?.homePreviewImage})` }">
     <div class="news-item__title">{{ data?.title }}</div>
     <div class="news-item__text">{{ data?.text }}</div>
-    <button @click="toRouterPath(data?.id)" class="news-item__button"><ArrowUpRight :size="24" color="#CCCCCC" /></button>
-  </div>
+  </button>
 </template>
 
 <style scoped lang="scss">
@@ -35,36 +34,26 @@ const toRouterPath = (id: any) => {
   flex-direction: column;
   justify-content: flex-end;
   align-items: flex-start;
+  text-align: start;
   gap: 0.5rem;
+  text-decoration: none;
+  border: none;
+
+  &:hover {
+    cursor: pointer;
+  }
 
   &__title {
     font-size: 1rem;
-    font-weight: 700;
+    font-weight: 800;
+    color: var(--color-secondary-dark);
   }
 
   &__text {
+    font-weight: 400;
     font-size: 0.8rem;
     color: var(--color-secondary-dark);
   }
 
-  &__button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    top: 1.5rem;
-    right: 1.5rem;
-    border: none;
-    border-radius: 50%;
-    background: var(--color-grey-dark);
-    opacity: 0.8;
-    width: 2.5rem;
-    height: 2.5rem;
-
-    &:hover {
-      background: var(--color-grey-light);
-      cursor: pointer;
-    }
-  }
 }
 </style>

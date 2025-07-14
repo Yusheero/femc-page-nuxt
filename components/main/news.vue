@@ -89,13 +89,13 @@ onUnmounted(() => {
   }
 
   &__title {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: 700;
   }
 
   &__description {
     color: var(--color-secondary-dark);
-    font-size: 1rem;
+    font-size: 0.8rem;
     font-weight: 300;
   }
 
@@ -139,11 +139,11 @@ onUnmounted(() => {
 
 .tags {
   &__item {
-    padding: 0.6rem 0.8rem;
+    padding: 0.4rem 0.6rem;
     background: var(--color-primary);
     color: var(--color-secondary);
     border-radius: 0.3rem;
-    font-size: 1rem;
+    font-size: 0.8rem;
     font-weight: 600;
   }
 }

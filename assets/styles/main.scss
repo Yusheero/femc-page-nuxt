@@ -1,0 +1,32 @@
+:root {
+  --color-primary-light: #252d4a;
+  --color-primary: #1a2341;
+  --color-primary-dark: #151d38;
+
+  --color-secondary-deep-dark-fantasies: #808080;
+  --color-secondary-dark: #bfc8ce;
+  --color-secondary: #edf0f1;
+  --color-secondary-light: #feffff;
+
+  --color-black: #050505;
+  --color-black-light: #151515;
+
+  --color-grey-light: #282828;
+  --color-grey: #232323;
+  --color-grey-dark: #1c1c1c;
+
+  --color-red: #921c1c;
+}
+
+html, body, div, span, object, iframe, figure, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, code, em, img, small, strike, strong, sub, sup, tt, b, u, i, ol, ul, li, fieldset, form, label, table, caption, tbody, tfoot, thead, tr, th, td, main, canvas, embed, footer, header, nav, section, video{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    text-size-adjust: none;
+    font-family: 'Nunito Sans', serif;
+}

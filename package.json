@@ -1,0 +1,36 @@
+{
+  "name": "nuxt-app",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "clean": "./node_modules/.bin/rimraf ./dist ./.output ./.nuxt",
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "@nuxt/kit": "3.17.5",
+    "@nuxtjs/google-fonts": "3.2.0",
+    "@pinia/nuxt": "0.11.1",
+    "axios": "1.10.0",
+    "keen-slider": "6.8.6",
+    "lucide-vue-next": "0.523.0",
+    "modern-css-reset": "1.4.0",
+    "nuxt": "3.17.5",
+    "rimraf": "6.0.1",
+    "vue": "3.5.17",
+    "vue-router": "4.5.1",
+    "vue3-simple-icons": "15.0.0"
+  },
+  "devDependencies": {
+    "nuxt-icon": "1.0.0-beta.7",
+    "pinia": "3.0.3",
+    "sass-embedded": "1.89.2",
+    "@nuxt/image": "1.2.0"
+  },
+  "overrides": {
+    "sharp": "0.32.6"
+  }
+}

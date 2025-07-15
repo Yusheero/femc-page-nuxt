@@ -1,4 +1,4 @@
-name: Deploy
+name: Deploy to Server
 
 on:
   push:
@@ -12,21 +12,27 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup SSH
+      - name: Add SSH Key
+        uses: webfactory/ssh-agent@v0.7.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Add host to known hosts
         run: |
           mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
-
-      - name: Test SSH connection
-        run: |
-          ssh -o ConnectTimeout=5 -T ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} echo "SSH connection successful!"
+          # Добавляем GitHub в known_hosts для git pull на сервере
+          ssh-keyscan -H github.com >> ~/.ssh/known_hosts
 
       - name: Deploy to server
         run: |
-          ssh -o ConnectTimeout=30 ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} << 'EOF'
+          ssh -T ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} << 'EOF'
           cd /mnt/servers/docker/nginx/femc-page-nuxt-master
-          git pull origin master
-          docker restart nuxt-femc
+          # Меняем URL репозитория на SSH (если нужно)
+          git remote set-url origin git@github.com:ваш_username/репозиторий.git
+          # Принудительный pull сбросом изменений
+          git fetch --all
+          git reset --hard origin/master
+          # Перезапуск Docker
+          docker compose up -d --build
           EOF

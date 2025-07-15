@@ -1,17 +1,30 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const chatUsers = [
+  {
+    "username": "Yusheero"
+  },
+  {
+    "username": "Zondermainy"
+  },
+  {
+    "username": "Rinki"
+  },
+  {
+    "username": "NikitaReptile"
+  },
+]
+</script>
 
 <template>
   <div class="chat">
     <div class="chat__sidebar">
       <ul class="chat__user-list">
-        <li class="chat__user" v-for="n in 5" :key="n">Пользователь</li>
+        <li class="chat__user" v-for="n in chatUsers" :key="n.username">{{ n.username }}</li>
       </ul>
     </div>
     <div class="chat__main">
       <div class="chat__messages">
-        <div class="chat__message" v-for="m in 7" :key="m">
-          <span class="chat__message-user">Пользователь</span> : Сообщение {{ m }}
-        </div>
+
       </div>
       <form class="chat__input-form">
         <input class="chat__input" type="text" placeholder="Введите сообщение..." />
@@ -26,12 +39,12 @@
   width: 100%;
   height: 100%;
   display: flex;
-  border: 2px solid #444851;
+  border: 2px solid var(--color-grey);
   border-radius: 1rem;
   overflow: hidden;
 
   &__sidebar {
-    width: 240px;
+    width: 180px;
     padding: 0.5rem;
     display: flex;
     flex-direction: column;
@@ -53,7 +66,7 @@
   }
   &__user {
     padding: 0.5rem 1rem;
-    background: #23272f;
+    background: var(--color-black-light);
     border-radius: 0.5rem;
     cursor: pointer;
     transition: background 0.2s;
@@ -92,7 +105,7 @@
   }
   &__input {
     flex: 1;
-    padding: 0.5rem 1rem;
+    padding: 0.8rem 1rem;
     border-radius: 0.5rem;
     border: 1px solid #444851;
     font-size: 1rem;
@@ -102,13 +115,13 @@
     padding: 0.5rem 1.5rem;
     border-radius: 0.5rem;
     border: none;
-    background: #4f8cff;
+    background: #343434;
     color: #fff;
     font-weight: 700;
     cursor: pointer;
     transition: background 0.2s;
     &:hover {
-      background: #3973cc;
+      background: #8c1010;
     }
   }
 }

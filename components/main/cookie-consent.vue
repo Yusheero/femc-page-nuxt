@@ -1,40 +1,37 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-
 const emit = defineEmits(['accept']);
 </script>
 
 <template>
   <div class="cookie-consent">
-    <div class="cookie-consent__title">Чтобы стать полноценным пользователем сайта, вам нужно принять Cookie</div>
-    <button class="cookie-consent__button" @click="$emit('accept')">Принять Cookie</button>
+    <div class="cookie-consent__title">Помогите нам улучшить сайт, подтвердите сбор и хранение cookies</div>
+    <button class="cookie-consent__button" @click="$emit('accept')">Принять</button>
   </div>
 </template>
 
 <style scoped lang="scss">
 .cookie-consent {
-  width: 100%;
-  height: 100%;
-  padding: 1rem;
-  background: var(--color-black-light);
-  border: 2px solid var(--color-grey);
+  width: fit-content;
+  padding: 0.5rem;
+  background: #fff;
   border-radius: 1rem;
   text-align: center;
   font-size: 1.5rem;
   font-weight: 700;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  gap: 1rem;
+  gap: 2rem;
 
   &__title {
-    font-size: 16px;
+    margin-left: 1.5rem;
+    font-size: 14px;
+    color: #000;
   }
 
   &__button {
-    width: 12rem;
-    height: 3rem;
+    width: 7rem;
+    height: 2.5rem;
     padding: 1rem 0;
     border: none;
     border-radius: 0.5rem;

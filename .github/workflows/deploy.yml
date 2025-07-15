@@ -1,4 +1,4 @@
-name: Deploy
+name: Deploy to Server
 
 on:
   push:
@@ -9,21 +9,37 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-    # Настройка SSH
-    - name: Setup SSH
-      run: |
-        mkdir -p ~/.ssh
-        echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-        chmod 600 ~/.ssh/id_rsa
-        ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
+      - name: Add SSH Key
+        uses: webfactory/ssh-agent@v0.7.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
-    # Выполнение команд на хосте
-    - name: Deploy to server
-      run: |
-        ssh -o ConnectTimeout=30 ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} << 'EOF'
-        cd /mnt/servers/docker/nginx/femc-page-nuxt-master
-        git pull origin master
-        docker restart nuxt-femc
+      - name: Add host to known hosts
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
+          ssh-keyscan -H github.com >> ~/.ssh/known_hosts
+
+      - name: Deploy to server
+        run: |
+          ssh -T ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} << 'EOF'
+          # Переходим в директорию проекта
+          cd /mnt/servers/docker/nginx/femc-page-nuxt-master || exit 1
+          
+          # Обновляем репозиторий
+          git remote set-url origin git@github.com:Yusheero/femc-page-nuxt.git
+          git fetch --all
+          git reset --hard origin/master
+          
+          # Перезапускаем контейнер
+          docker restart nuxt-femc || {
+            echo "Failed to restart container. Trying to start..."
+            docker start nuxt-femc
+          }
+          
+          # Проверяем статус
+          docker ps -f "name=nuxt-femc"
+          EOF

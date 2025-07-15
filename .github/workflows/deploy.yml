@@ -9,21 +9,24 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-    # Настройка SSH
-    - name: Setup SSH
-      run: |
-        mkdir -p ~/.ssh
-        echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-        chmod 600 ~/.ssh/id_rsa
-        ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
 
-    # Выполнение команд на хосте
-    - name: Deploy to server
-      run: |
-        ssh -o ConnectTimeout=30 ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} << 'EOF'
-        cd /mnt/servers/docker/nginx/femc-page-nuxt-master
-        git pull origin master
-        docker restart nuxt-femc
+      - name: Test SSH connection
+        run: |
+          ssh -o ConnectTimeout=5 -T ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} echo "SSH connection successful!"
+
+      - name: Deploy to server
+        run: |
+          ssh -o ConnectTimeout=30 ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} << 'EOF'
+          cd /mnt/servers/docker/nginx/femc-page-nuxt-master
+          git pull origin master
+          docker restart nuxt-femc
+          EOF

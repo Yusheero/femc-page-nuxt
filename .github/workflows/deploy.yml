@@ -21,18 +21,25 @@ jobs:
         run: |
           mkdir -p ~/.ssh
           ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
-          # Добавляем GitHub в known_hosts для git pull на сервере
           ssh-keyscan -H github.com >> ~/.ssh/known_hosts
 
       - name: Deploy to server
         run: |
           ssh -T ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} << 'EOF'
-          cd /mnt/servers/docker/nginx/femc-page-nuxt-master
-          # Меняем URL репозитория на SSH (если нужно)
-          git remote set-url origin git@github.com:ваш_username/репозиторий.git
-          # Принудительный pull сбросом изменений
+          # Переходим в директорию проекта
+          cd /mnt/servers/docker/nginx/femc-page-nuxt-master || exit 1
+          
+          # Обновляем репозиторий
+          git remote set-url origin git@github.com:Yusheero/femc-page-nuxt.git
           git fetch --all
           git reset --hard origin/master
-          # Перезапуск Docker
-          docker compose up -d --build
+          
+          # Перезапускаем контейнер
+          docker restart nuxt-femc || {
+            echo "Failed to restart container. Trying to start..."
+            docker start nuxt-femc
+          }
+          
+          # Проверяем статус
+          docker ps -f "name=nuxt-femc"
           EOF

@@ -1,6 +1,24 @@
 <script setup>
 import { useHead } from '#imports'
-useHead({ title: 'FEMC | Celedia' })
+useHead({
+  title: 'FEMC | Celedia',
+  meta: [
+    { name: 'description', content: 'Сервер Celedia — часть комплекса FEMC. Играйте на уникальном сервере Minecraft!' },
+    { name: 'keywords', content: 'celedia, сервер, майнкрафт, femc' },
+    { property: 'og:title', content: 'FEMC | Celedia' },
+    { property: 'og:description', content: 'Сервер Celedia — часть комплекса FEMC. Играйте на уникальном сервере Minecraft!' },
+    { property: 'og:image', content: '/logo.png' },
+    { property: 'og:type', content: 'website' },
+    { property: 'og:url', content: 'https://femc.space/celedia' },
+    { name: 'twitter:card', content: 'summary_large_image' },
+    { name: 'twitter:title', content: 'FEMC | Celedia' },
+    { name: 'twitter:description', content: 'Сервер Celedia — часть комплекса FEMC. Играйте на уникальном сервере Minecraft!' },
+    { name: 'twitter:image', content: '/logo.png' }
+  ],
+  link: [
+    { rel: 'canonical', href: 'https://femc.ru/celedia' }
+  ]
+})
 import { imagesData } from '@/data/images'; //TODO: Не забыть про исправление изображений
 import { usePageStore } from '@/stores/store';
 import { useServersDataStore } from '@/stores/servers-data-store';

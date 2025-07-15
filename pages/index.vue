@@ -2,7 +2,22 @@
 import { useHead } from '#imports'
 useHead({ 
   title: 'FEMC | Главная',
-  description: 'Дальневосточный комплекс серверов майнкрафт, Дальневосточный сервер майнкрафт'
+  meta: [
+    { name: 'description', content: 'Дальневосточный комплекс серверов майнкрафт. Лучший сервер на Дальнем Востоке.' },
+    { name: 'keywords', content: 'майнкрафт, сервер дальний восток, minecraft, femc' },
+    { property: 'og:title', content: 'FEMC | Главная' },
+    { property: 'og:description', content: 'Дальневосточный комплекс серверов майнкрафт. Лучший сервер на Дальнем Востоке.' },
+    { property: 'og:image', content: '/logo.png' },
+    { property: 'og:type', content: 'website' },
+    { property: 'og:url', content: 'https://femc.space/' },
+    { name: 'twitter:card', content: 'summary_large_image' },
+    { name: 'twitter:title', content: 'FEMC | Главная' },
+    { name: 'twitter:description', content: 'Дальневосточный комплекс серверов майнкрафт. Лучший сервер на Дальнем Востоке.' },
+    { name: 'twitter:image', content: '/logo.png' }
+  ],
+  link: [
+    { rel: 'canonical', href: 'https://femc.space/' }
+  ]
 })
 </script>
 

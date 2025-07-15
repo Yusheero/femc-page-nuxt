@@ -1,6 +1,24 @@
 <script setup>
 import { useHead } from '#imports'
-useHead({ title: 'FEMC | Wensar' })
+useHead({
+  title: 'FEMC | Wensar',
+  meta: [
+    { name: 'description', content: 'Сервер Wensar — часть комплекса FEMC. Играйте на уникальном сервере Minecraft!' },
+    { name: 'keywords', content: 'wensar, сервер, майнкрафт, femc' },
+    { property: 'og:title', content: 'FEMC | Wensar' },
+    { property: 'og:description', content: 'Сервер Wensar — часть комплекса FEMC. Играйте на уникальном сервере Minecraft!' },
+    { property: 'og:image', content: '/logo.png' },
+    { property: 'og:type', content: 'website' },
+    { property: 'og:url', content: 'https://femc.space/wensar' },
+    { name: 'twitter:card', content: 'summary_large_image' },
+    { name: 'twitter:title', content: 'FEMC | Wensar' },
+    { name: 'twitter:description', content: 'Сервер Wensar — часть комплекса FEMC. Играйте на уникальном сервере Minecraft!' },
+    { name: 'twitter:image', content: '/logo.png' }
+  ],
+  link: [
+    { rel: 'canonical', href: 'https://femc.space/wensar' }
+  ]
+})
 import { serversData } from '~/data/servers-data';
 import { newsData } from '@/data/news-data';
 import { imagesData } from '@/data/images';

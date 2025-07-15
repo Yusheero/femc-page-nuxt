@@ -1,6 +1,24 @@
 <script setup>
 import { useHead } from '#imports'
-useHead({ title: 'FEMC | Команда' })
+useHead({
+  title: 'FEMC | Команда',
+  meta: [
+    { name: 'description', content: 'Команда проекта FEMC — профессионалы своего дела в мире Minecraft.' },
+    { name: 'keywords', content: 'команда, админы, модераторы, майнкрафт, femc' },
+    { property: 'og:title', content: 'FEMC | Команда' },
+    { property: 'og:description', content: 'Команда проекта FEMC — профессионалы своего дела в мире Minecraft.' },
+    { property: 'og:image', content: '/logo.png' },
+    { property: 'og:type', content: 'website' },
+    { property: 'og:url', content: 'https://femc.space/team' },
+    { name: 'twitter:card', content: 'summary_large_image' },
+    { name: 'twitter:title', content: 'FEMC | Команда' },
+    { name: 'twitter:description', content: 'Команда проекта FEMC — профессионалы своего дела в мире Minecraft.' },
+    { name: 'twitter:image', content: '/logo.png' }
+  ],
+  link: [
+    { rel: 'canonical', href: 'https://femc.space/team' }
+  ]
+})
 </script>
 
 <template>

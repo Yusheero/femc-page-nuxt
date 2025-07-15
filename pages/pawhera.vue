@@ -1,6 +1,24 @@
 <script setup>
 import { useHead } from '#imports'
-useHead({ title: 'FEMC | Pawhera' })
+useHead({
+  title: 'FEMC | Pawhera',
+  meta: [
+    { name: 'description', content: 'Сервер Pawhera — часть комплекса FEMC. Играйте на уникальном сервере Minecraft!' },
+    { name: 'keywords', content: 'pawhera, сервер, майнкрафт, femc' },
+    { property: 'og:title', content: 'FEMC | Pawhera' },
+    { property: 'og:description', content: 'Сервер Pawhera — часть комплекса FEMC. Играйте на уникальном сервере Minecraft!' },
+    { property: 'og:image', content: '/logo.png' },
+    { property: 'og:type', content: 'website' },
+    { property: 'og:url', content: 'https://femc.space/pawhera' },
+    { name: 'twitter:card', content: 'summary_large_image' },
+    { name: 'twitter:title', content: 'FEMC | Pawhera' },
+    { name: 'twitter:description', content: 'Сервер Pawhera — часть комплекса FEMC. Играйте на уникальном сервере Minecraft!' },
+    { name: 'twitter:image', content: '/logo.png' }
+  ],
+  link: [
+    { rel: 'canonical', href: 'https://femc.space/pawhera' }
+  ]
+})
 import { serversData } from '~/data/servers-data';
 import { newsData } from '@/data/news-data';
 import { imagesData } from '@/data/images';

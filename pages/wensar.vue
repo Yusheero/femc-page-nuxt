@@ -1,4 +1,6 @@
 <script setup>
+import { useHead } from '#imports'
+useHead({ title: 'FEMC | Wensar' })
 import { serversData } from '~/data/servers-data';
 import { newsData } from '@/data/news-data';
 import { imagesData } from '@/data/images';

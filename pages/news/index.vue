@@ -1,4 +1,6 @@
 <script setup>
+import { useHead } from '#imports'
+useHead({ title: 'FEMC | Новости' })
 import { useNewsStore } from '@/stores/news-store';
 const store = useNewsStore();
 

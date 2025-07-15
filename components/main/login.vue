@@ -1,9 +1,28 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { usePageStore } from '@/stores/store';
+import { ref, onMounted } from 'vue';
+import CookieConsent from './cookie-consent.vue';
+
+const store = usePageStore();
+
+onMounted(() => {
+  // Дополнительная проверка куки на случай, если store не успел инициализироваться
+  if (!store.cookieAccepted) {
+    const match = document.cookie.match(/(?:^|; )cookieAccepted=([^;]*)/);
+    if (match && match[1] === '1') {
+      store.setCookieAccepted(true);
+    }
+  }
+});
+</script>
 
 <template>
   <div class="login">
-    <div class="login__title">Статистика по серверам и возможность писать в чат</div>
-    <button class="login__button">Войти</button>
+    <CookieConsent v-if="!store.cookieAccepted" @accept="() => store.setCookieAccepted(true)" />
+    <template v-else>
+      <div class="login__title">Статистика по серверам и возможность писать в чат</div>
+      <button class="login__button">Войти</button>
+    </template>
   </div>
 </template>
 

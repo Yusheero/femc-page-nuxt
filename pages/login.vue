@@ -1,4 +1,7 @@
-<script setup></script>
+<script setup>
+import { useHead } from '#imports'
+useHead({ title: 'FEMC | Вход' })
+</script>
 
 <template>
   <div class="login-page">

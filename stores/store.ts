@@ -13,6 +13,29 @@ export const usePageStore = defineStore('page-store', () => {
   const lastRoutePath = ref('');
   const newsData = ref();
   const plansData = ref();
+  const cookieAccepted = ref(false);
+
+  const setCookieAccepted = (value: boolean) => {
+    cookieAccepted.value = value;
+    if (value) {
+      localStorage.setItem('cookieAccepted', '1');
+      document.cookie = 'cookieAccepted=1; path=/; max-age=31536000'; // 1 год
+    } else {
+      localStorage.removeItem('cookieAccepted');
+      document.cookie = 'cookieAccepted=; path=/; max-age=0';
+    }
+  };
+
+  // При инициализации читаем из cookie или localStorage
+  if (typeof window !== 'undefined') {
+    let saved = localStorage.getItem('cookieAccepted');
+    if (!saved) {
+      // Парсим куки
+      const match = document.cookie.match(/(?:^|; )cookieAccepted=([^;]*)/);
+      if (match && match[1] === '1') saved = '1';
+    }
+    if (saved === '1') cookieAccepted.value = true;
+  }
 
   const setLastRoutePath = (path: string) => {
     lastRoutePath.value = path;
@@ -95,5 +118,7 @@ export const usePageStore = defineStore('page-store', () => {
     getServerStatus,
     totalPlayers,
     fetchAllServerStatuses,
+    cookieAccepted,
+    setCookieAccepted,
   }
 })

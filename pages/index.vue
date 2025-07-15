@@ -1,4 +1,10 @@
-<script setup></script>
+<script setup>
+import { useHead } from '#imports'
+useHead({ 
+  title: 'FEMC | Главная',
+  description: 'Дальневосточный комплекс серверов майнкрафт, Дальневосточный сервер майнкрафт'
+})
+</script>
 
 <template>
     <div class="main-page">

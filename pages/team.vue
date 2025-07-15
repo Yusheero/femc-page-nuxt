@@ -1,5 +1,6 @@
 <script setup>
-
+import { useHead } from '#imports'
+useHead({ title: 'FEMC | Команда' })
 </script>
 
 <template>

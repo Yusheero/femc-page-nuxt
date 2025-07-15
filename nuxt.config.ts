@@ -14,5 +14,12 @@ export default defineNuxtConfig({
     },
     display: 'swap',
     prefetch: true,
+  },
+  app: {
+    head: {
+      link: [
+        { rel: 'icon', type: 'image/png', href: '/logo.png' }
+      ]
+    }
   }
 })

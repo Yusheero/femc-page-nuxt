@@ -1,4 +1,6 @@
 <script setup>
+import { useHead } from '#imports'
+useHead({ title: 'FEMC | Celedia' })
 import { imagesData } from '@/data/images'; //TODO: Не забыть про исправление изображений
 import { usePageStore } from '@/stores/store';
 import { useServersDataStore } from '@/stores/servers-data-store';

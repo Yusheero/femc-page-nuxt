@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useHead } from '#imports'
 import { computed } from 'vue';
 import { usePageStore } from '@/stores/store';
 import { useNewsStore } from '@/stores/news-store';
@@ -18,6 +19,10 @@ const newsStore = useNewsStore();
 
 /** Отображаемые на странице данные */
 const pageData = computed(() => newsStore.news.find((n) => n.id === newsId));
+
+useHead(() => ({
+  title: pageData.value ? `FEMC | ${pageData.value.title}` : 'FEMC | Новость'
+}))
 
 const toRouterPath = () => {
   const lastRoutePath = store.lastRoutePath;

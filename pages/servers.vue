@@ -1,4 +1,7 @@
-<script setup></script>
+<script setup>
+import { useHead } from '#imports'
+useHead({ title: 'FEMC | Серверы' })
+</script>
 
 <template>
   <div class="servers-page">

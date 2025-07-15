@@ -1,10 +1,31 @@
-# Nuxt Minimal Starter
+# FEMC Page (Nuxt 3)
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+## Описание проекта
 
-## Setup
+**FEMC Page** — это веб-сайт для Дальневосточного комплекса серверов Minecraft (FEMC). Проект предоставляет участникам комьюнити удобный доступ к информации о серверах, новостям, чату, а также социальным сетям и другим сервисам проекта. Сайт реализован с использованием современных веб-технологий и ориентирован на простоту, скорость и удобство пользователей.
 
-Make sure to install dependencies:
+## Назначение
+
+- Информирование игроков о новостях и событиях на серверах FEMC.
+- Предоставление информации о статусе серверов и их особенностях.
+- Взаимодействие участников через чат и социальные сети.
+- Централизованный доступ к дополнительным сервисам и форуму проекта.
+
+## Используемые технологии
+
+- **Nuxt 3** — основной фреймворк для разработки фронтенда.
+- **Vue 3** — библиотека для построения пользовательских интерфейсов.
+- **Pinia** — современное хранилище состояния для Vue.
+- **Sass (SCSS)** — препроцессор для стилизации.
+- **Keen Slider** — библиотека для создания слайдеров.
+- **Axios** — HTTP-клиент для работы с API.
+- **@nuxtjs/google-fonts** — подключение шрифтов Google.
+- **vue3-simple-icons, lucide-vue-next** — иконки.
+- **modern-css-reset** — сброс стилей для кроссбраузерности.
+
+## Инструкции по работе с проектом
+
+### Установка зависимостей
 
 ```bash
 # npm
@@ -20,9 +41,7 @@ yarn install
 bun install
 ```
 
-## Development Server
-
-Start the development server on `http://localhost:3000`:
+### Запуск сервера разработки
 
 ```bash
 # npm
@@ -38,9 +57,9 @@ yarn dev
 bun run dev
 ```
 
-## Production
+Сервер будет доступен по адресу: [http://localhost:3000](http://localhost:3000)
 
-Build the application for production:
+### Сборка для продакшена
 
 ```bash
 # npm
@@ -56,7 +75,7 @@ yarn build
 bun run build
 ```
 
-Locally preview production build:
+### Предпросмотр продакшн-сборки
 
 ```bash
 # npm
@@ -71,5 +90,3 @@ yarn preview
 # bun
 bun run preview
 ```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.

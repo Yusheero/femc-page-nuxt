@@ -38,6 +38,8 @@ const toRouterPath = (id: any) => {
   gap: 0.5rem;
   text-decoration: none;
   border: none;
+  background-position: center center;
+  background-size: cover;
 
   &:hover {
     cursor: pointer;

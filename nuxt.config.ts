@@ -3,7 +3,7 @@ export default defineNuxtConfig({
   modules: [
     '@nuxtjs/google-fonts',
     '@pinia/nuxt',
-    '@nuxt/image',
+    '@nuxt/image-edge',
   ],
   compatibilityDate: '2025-05-15',
   devtools: { enabled: true },

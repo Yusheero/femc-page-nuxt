@@ -6,6 +6,7 @@ import { useNewsStore } from '@/stores/news-store';
 import { useRoute } from "vue-router";
 import { useRouter } from 'vue-router';
 import { X } from 'lucide-vue-next';
+import { NuxtImg } from '#components';
 
 const router = useRouter();
 const route = useRoute();
@@ -49,7 +50,7 @@ const toRouterPath = () => {
           <div class="page__description">{{ pageData?.text }}</div>
         </div>
       </div>
-      <img class="page__image" :src="pageData?.serverPreviewImage" alt="">
+      <NuxtImg class="page__image" :src="pageData?.serverPreviewImage" alt="" />
     </div>
   </div>
 </template>

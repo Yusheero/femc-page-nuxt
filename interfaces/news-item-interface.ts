@@ -6,7 +6,6 @@ export interface NewsItemInterface {
     title: string;
     text: string;
     date: string;
-    newsViewClass: string;
     homePreviewImage: string;
     serverPreviewImage: string;
     newsPreviewImage: string;

@@ -14,7 +14,8 @@ export const serversData: ServersDataInterface[] = [
     information: {
       size: "1000x1000",
     },
-    backgroundClass: "celedia-background",
+    background: "/images/celedia-bg.jpg",
+    logo: "/images/celedia-logo.png",
     labels: ['ванилла', 'приват'],
     routerPath: "/celedia",
   },
@@ -31,7 +32,8 @@ export const serversData: ServersDataInterface[] = [
     information: {
       size: "1000x1000",
     },
-    backgroundClass: "pawhera-background",
+    background: "/images/pawhera-bg.jpg",
+    logo: "/images/pawhera-logo.png",
     labels: ['анархия'],
     routerPath: "/pawhera",
   },
@@ -48,7 +50,8 @@ export const serversData: ServersDataInterface[] = [
     information: {
       size: "1000x1000",
     },
-    backgroundClass: "wensar-background",
+    background: "/images/wensar-bg.jpg",
+    logo: "/images/wensar-logo.png",
     labels: ['моды'],
     routerPath: "/wensar",
   },

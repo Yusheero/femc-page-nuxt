@@ -20,7 +20,7 @@ const toRouterPath = () => {
         <button class="info__button" @click="toRouterPath"><ArrowLeft :size="18" color="#CCCCCC" /></button>
       </div>
       <div class="info__inner">
-        <div :class="['info__logo ' + props?.data?.logoClass]"></div>
+        <div class="info__logo" :style="{ backgroundImage: `url(${props.data?.logo})`}"></div>
         <p class="info__description" v-for="item in props.data?.description">{{ item }}</p>
       </div>
     </div>  
@@ -71,8 +71,9 @@ const toRouterPath = () => {
   }
 
   &__logo {
-    width: 270px;
-    height: 55px;
+    width: 220px;
+    height: 60px;
+    background-size: contain;
     background-repeat: no-repeat;
     margin-bottom: 0.5rem;
   }
@@ -128,30 +129,6 @@ const toRouterPath = () => {
       background: var(--color-grey-light);
       cursor: pointer;
     }
-  }
-
-  .celedia {
-    background-image: url('@/assets/images/celedia-logo.png');
-    background-size: contain;
-    filter: drop-shadow(0px 0px 12px rgba(51, 115, 189, 0.8));
-  }
-
-  .celedia-old {
-    background-image: url('@/assets/images/celedia-old-logo.png');
-    background-size: contain;
-    filter: drop-shadow(0px 0px 12px rgba(59, 93, 167, 0.8));
-  }
-
-  .pawhera {
-    background-image: url('@/assets/images/pawhera-logo.png');
-    background-size: contain;
-    filter: drop-shadow(0px 0px 12px rgba(32, 66, 155, 0.8));
-  }
-
-  .eventus {
-    background-image: url('@/assets/images/eventus-logo.png');
-    background-size: contain;
-    filter: drop-shadow(0px 0px 12px rgba(187, 90, 174, 0.8));
   }
 }
 </style>

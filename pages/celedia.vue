@@ -19,7 +19,6 @@ useHead({
     { rel: 'canonical', href: 'https://femc.ru/celedia' }
   ]
 })
-import { imagesData } from '@/data/images'; //TODO: Не забыть про исправление изображений
 import { usePageStore } from '@/stores/store';
 import { useServersDataStore } from '@/stores/servers-data-store';
 import { useNewsStore } from '@/stores/news-store';

@@ -1,18 +1,63 @@
 <script setup lang="ts">
+import { ref, onMounted, onBeforeUnmount } from 'vue'
+
 const chatUsers = [
   {
     "username": "Yusheero"
   },
-  {
-    "username": "Zondermainy"
-  },
-  {
-    "username": "Rinki"
-  },
-  {
-    "username": "NikitaReptile"
-  },
 ]
+
+// Реактивные переменные для сообщений и ввода
+const messages = ref<{user: string, text: string}[]>([])
+const input = ref('')
+const username = ref(chatUsers[0].username) // Для простоты, первый пользователь
+let ws: WebSocket | null = null
+
+// Функция отправки сообщения
+function sendMessage() {
+  if (ws && ws.readyState === WebSocket.OPEN && input.value.trim()) {
+    const msg = JSON.stringify({ user: username.value, text: input.value })
+    ws.send(msg)
+    input.value = ''
+  }
+}
+
+// Обработка отправки формы
+function onSubmit(e: Event) {
+  e.preventDefault()
+  sendMessage()
+}
+
+onMounted(() => {
+  // Подключение к WebSocket (используем публичный эхо-сервер)
+  ws = new WebSocket('wss://ws.ifelse.io')
+  ws.onmessage = (event) => {
+    try {
+      // Пробуем распарсить как JSON, иначе просто текст
+      const data = JSON.parse(event.data)
+      if (data.user && data.text) {
+        messages.value.push({ user: data.user, text: data.text })
+      } else {
+        messages.value.push({ user: 'server', text: event.data })
+      }
+    } catch {
+      messages.value.push({ user: 'server', text: event.data })
+    }
+  }
+  ws.onopen = () => {
+    messages.value.push({ user: 'system', text: 'WebSocket соединение установлено.' })
+  }
+  ws.onclose = () => {
+    messages.value.push({ user: 'system', text: 'WebSocket соединение закрыто.' })
+  }
+  ws.onerror = () => {
+    messages.value.push({ user: 'system', text: 'Ошибка WebSocket.' })
+  }
+})
+
+onBeforeUnmount(() => {
+  if (ws) ws.close()
+})
 </script>
 
 <template>
@@ -24,10 +69,12 @@ const chatUsers = [
     </div>
     <div class="chat__main">
       <div class="chat__messages">
-
+        <div v-for="(msg, i) in messages" :key="i" class="chat__message">
+          <span class="chat__message-user">{{ msg.user }}:</span> {{ msg.text }}
+        </div>
       </div>
-      <form class="chat__input-form">
-        <input class="chat__input" type="text" placeholder="Введите сообщение..." />
+      <form class="chat__input-form" @submit="onSubmit">
+        <input class="chat__input" type="text" v-model="input" placeholder="Введите сообщение..." />
         <button class="chat__send-btn" type="submit">Отправить</button>
       </form>
     </div>

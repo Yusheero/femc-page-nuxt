@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { NuxtImg } from '#components';
 
 /** Копирование текста из поля IP по нажатию кнопки */
 const copyInnerHtml = () => {
@@ -28,7 +29,7 @@ const copyInnerHtml = () => {
 <template>
   <div class="logo">
     <div class="logo__image-container">
-      <div class="logo__image"></div>
+      <NuxtImg class="logo__image" src="/images/main-logo.png" alt="Главный логотип сайта" />
     </div>
     <div class="logo__bottom">
       <div class="logo__location-row">
@@ -117,9 +118,6 @@ const copyInnerHtml = () => {
   &__image {
     width: 14rem;
     height: 4.8rem;
-    background-image: url('@/assets/images/main-logo.png');
-    background-size: contain;
-    background-repeat: no-repeat;
     filter: drop-shadow(0px 0px 44px rgba(255, 255, 255, 0.8));
   }
 

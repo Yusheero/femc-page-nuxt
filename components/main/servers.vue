@@ -1,5 +1,6 @@
 <script setup lang="ts">
 /** Компонент серверов на главной странице */
+import { NuxtImg } from '#components';
 import { useServersDataStore } from '@/stores/servers-data-store';
 
 import { useRouter } from 'vue-router';
@@ -17,8 +18,8 @@ const toRouterPath = (path: string) => {
 
 <template>
   <div class="servers">
-    <button @click="toRouterPath(item.routerPath)" class="servers__item item" :class="[item.backgroundClass]" v-for="item in serversData">
-      <div class="item__logo" :class="[item.logoClass]"></div>
+    <button v-for="item in serversData" @click="toRouterPath(item.routerPath)" class="servers__item item" :style="{ backgroundImage: `url(${item.background})` }">
+      <NuxtImg class="item__logo" :src="item.logo"></NuxtImg>
       <div class="item__labels-container">
         <p class="item__label" v-for="s in item.labels">{{ s }}</p>
       </div>
@@ -39,7 +40,7 @@ const toRouterPath = (path: string) => {
   overflow: hidden;
 
   &__item {
-    padding: 1rem;
+    padding: 1.5rem;
     color: white;
     width: 100%;
     height: 100%;
@@ -84,31 +85,9 @@ const toRouterPath = (path: string) => {
   }
 
   &__logo {
-    width: 140px;
-    height: 40px;
-    background-size: contain;
-    background-repeat: no-repeat;
+    height: 34px;
+    filter: drop-shadow(0px 0px 44px rgba(0, 0, 0, 1));
   }
-}
-
-.celedia-background {
-  background-image: url('@/assets/images/celedia-bg.jpg');
-}
-
-.celedia {
-  background-image: url('@/assets/images/celedia-logo.png');
-}
-
-.pawhera-background {
-  background-image: url('@/assets/images/pawhera-bg.jpg');
-}
-
-.pawhera {
-  background-image: url('@/assets/images/pawhera-logo.png');
-}
-
-.wensar-background {
-  background-image: url('@/assets/images/wensar-bg.jpg');
 }
 </style>
 

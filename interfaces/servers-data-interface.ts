@@ -5,7 +5,8 @@ export interface ServersDataInterface {
     description: string[],
     logoClass: string,
     information: {},
-    backgroundClass: string,
+    background: string,
+    logo: string,
     labels: string[],
     routerPath: string,
 }

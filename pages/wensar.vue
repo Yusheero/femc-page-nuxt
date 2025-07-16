@@ -21,7 +21,6 @@ useHead({
 })
 import { serversData } from '~/data/servers-data';
 import { newsData } from '@/data/news-data';
-import { imagesData } from '@/data/images';
 import { usePageStore } from '@/stores/store';
 
 const store = usePageStore();
@@ -40,13 +39,10 @@ const serverData = ref();
 /** Данные по новостям серверам из Data */
 const serverNews = ref();
 
-/** Данные по картинкам из Data */
-const serverPictures = ref();
 
 /** Получение всех данных по серверу через название роута */
 serverData.value = serversData.find(s => s.id === routeId);
 serverNews.value = newsData.filter((item) => item.server === routeId);
-serverPictures.value = imagesData.find((item) => item.server === routeId);
 </script>
 
 <template>

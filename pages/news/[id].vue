@@ -21,9 +21,48 @@ const newsStore = useNewsStore();
 /** Отображаемые на странице данные */
 const pageData = computed(() => newsStore.news.find((n) => n.id === newsId));
 
-useHead(() => ({
-  title: pageData.value ? `FEMC | ${pageData.value.title}` : 'FEMC | Новость'
-}))
+useHead(() => {
+  const title = pageData.value ? `FEMC | ${pageData.value.title}` : 'FEMC | Новость';
+  const description = pageData.value?.text?.slice(0, 160) || 'Новости FEMC — будь в курсе последних событий на наших серверах Minecraft.';
+  const image = pageData.value?.serverPreviewImage || '/logo.png';
+  const url = `https://femc.space/news/${newsId}`;
+  return {
+    title,
+    meta: [
+      { name: 'description', content: description },
+      { property: 'og:title', content: title },
+      { property: 'og:description', content: description },
+      { property: 'og:image', content: image },
+      { property: 'og:type', content: 'article' },
+      { property: 'og:url', content: url },
+      { name: 'twitter:card', content: 'summary_large_image' },
+      { name: 'twitter:title', content: title },
+      { name: 'twitter:description', content: description },
+      { name: 'twitter:image', content: image }
+    ],
+    link: [
+      { rel: 'canonical', href: url }
+    ],
+    script: [
+      {
+        type: 'application/ld+json',
+        innerHTML: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'NewsArticle',
+          'headline': pageData.value?.title,
+          'image': [image],
+          'datePublished': pageData.value?.date || '',
+          'author': {
+            '@type': 'Person',
+            'name': pageData.value?.author || 'FEMC'
+          },
+          'description': description,
+          'mainEntityOfPage': url
+        })
+      }
+    ]
+  }
+})
 
 const toRouterPath = () => {
   const lastRoutePath = store.lastRoutePath;
@@ -50,7 +89,7 @@ const toRouterPath = () => {
           <div class="page__description">{{ pageData?.text }}</div>
         </div>
       </div>
-      <NuxtImg class="page__image" :src="pageData?.serverPreviewImage" alt="" />
+      <NuxtImg class="page__image" :src="pageData?.serverPreviewImage" :alt="pageData?.title || 'Изображение новости'" />
     </div>
   </div>
 </template>

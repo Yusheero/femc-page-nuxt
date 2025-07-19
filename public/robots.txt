@@ -1,2 +1,5 @@
 User-Agent: *
-Disallow:
+Disallow: /login
+Allow: /
+
+Sitemap: https://femc.space/api/sitemap.xml

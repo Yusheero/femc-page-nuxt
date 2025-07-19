@@ -98,11 +98,13 @@ onBeforeUnmount(() => {
     gap: 1rem;
     border-right: 2px solid #23272f;
   }
+
   &__sidebar-title {
     font-size: 18px;
     font-weight: 700;
     margin-bottom: 0.5rem;
   }
+
   &__user-list {
     list-style: none;
     padding: 0;
@@ -111,6 +113,7 @@ onBeforeUnmount(() => {
     flex-direction: column;
     gap: 0.5rem;
   }
+
   &__user {
     padding: 0.5rem 1rem;
     background: var(--color-black-light);
@@ -121,6 +124,7 @@ onBeforeUnmount(() => {
       background: #181a20;
     }
   }
+
   &__main {
     flex: 1;
     display: flex;
@@ -128,6 +132,7 @@ onBeforeUnmount(() => {
     padding: 0.5rem;
     gap: 0.5rem;
   }
+
   &__messages {
     flex: 1;
     overflow-y: auto;
@@ -138,18 +143,22 @@ onBeforeUnmount(() => {
     border-radius: 0.5rem;
     padding: 0.8rem;
   }
+
   &__message {
     font-size: 1rem;
     color: #fff;
   }
+
   &__message-user {
     font-weight: 700;
     color: #4f8cff;
   }
+
   &__input-form {
     display: flex;
     gap: 0.5rem;
   }
+
   &__input {
     flex: 1;
     padding: 0.8rem 1rem;
@@ -158,6 +167,7 @@ onBeforeUnmount(() => {
     font-size: 1rem;
     outline: none;
   }
+  
   &__send-btn {
     padding: 0.5rem 1.5rem;
     border-radius: 0.5rem;

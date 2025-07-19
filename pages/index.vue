@@ -22,16 +22,16 @@ useHead({
 </script>
 
 <template>
-    <div class="main-page">
-      <MainLogo class="main-page__logo" />
-      <MainLogin class="main-page__login" />
-      <MainNavigation class="main-page__navigation" />
-      <MainSocials class="main-page__socials" />
-      <MainServers class="main-page__servers" />
-      <MainNews class="main-page__news" />
-      <MainChat class="main-page__chat" />
-      <Footer class="main-page__footer" />
-    </div>
+  <div class="main-page">
+    <MainLogo class="main-page__logo" />
+    <MainLogin class="main-page__login" />
+    <MainNavigation class="main-page__navigation" />
+    <MainSocials class="main-page__socials" />
+    <MainServers class="main-page__servers" />
+    <MainNews class="main-page__news" />
+    <MainChat class="main-page__chat" />
+    <Footer class="main-page__footer" />
+  </div>
 </template>
 
 <style scoped lang="scss">

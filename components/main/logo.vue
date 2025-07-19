@@ -29,7 +29,7 @@ const copyInnerHtml = () => {
 <template>
   <div class="logo">
     <div class="logo__image-container">
-      <NuxtImg class="logo__image" src="/images/main-logo.png" alt="Главный логотип сайта" />
+      <NuxtImg class="logo__image" src="/logo.png" alt="Главный логотип сайта" />
     </div>
     <div class="logo__bottom">
       <div class="logo__location-row">
@@ -52,7 +52,6 @@ const copyInnerHtml = () => {
 </template>
 
 <style scoped lang="scss">
-
 .logo {
   width: 100%;
   padding: 0.5rem;
